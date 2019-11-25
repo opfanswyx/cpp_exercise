@@ -1,2 +1,3 @@
-add_subdirectory(cpp_namespace)
-add_subdirectory(cpp_typecast)
+add_subdirectory(cpp1_namespace)
+add_subdirectory(cpp2_typecast)
+add_subdirectory(cpp3_reference)

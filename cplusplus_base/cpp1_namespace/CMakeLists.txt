@@ -1,4 +1,4 @@
 set(namespace_src
         namespace.cpp
         )
-add_executable(cpp_namespace ${namespace_src})
+add_executable(cpp1_namespace ${namespace_src})
