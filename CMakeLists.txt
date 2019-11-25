@@ -3,4 +3,4 @@ project(cpp_exercise)
 
 set(CMAKE_CXX_STANDARD 11)
 
-ADD_SUBDIRECTORY(other_test)
+ADD_SUBDIRECTORY(cplusplus_base)

@@ -1,0 +1,2 @@
+add_subdirectory(cpp_namespace)
+add_subdirectory(cpp_typecast)
