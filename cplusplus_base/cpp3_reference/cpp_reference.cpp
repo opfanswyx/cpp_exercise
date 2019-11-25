@@ -1,8 +1,8 @@
 //
 // Created by Administrator on 2019/11/25.
 //
-#include<iostream>
 #if 0 //基础引用
+#include<iostream>
 using namespace std;
 void swap(int& x, int& y)
 {
@@ -91,8 +91,97 @@ int main()
     return 0;
 }
 #endif
-#if 1 //函数指针的引用
+#if 0 //函数指针的引用
 //int(* z(int x,int(*y)(int)))(int)
 //int(* &z(int x,int(* &y)(int)))(int)
+#include<iostream>
 
+int jia(int a, int b)
+{
+    return a + b;
+}
+
+int jian(int a, int b)
+{
+    return a - b;
+}
+
+void change(int(* & rp)(int,int))
+{
+    rp = jian;
+}
+
+int main1()
+{
+    int(* p)(int a, int b)(jia);
+    std::cout << p(1,2) << std::endl;
+    change(p);
+    std::cout << p(1,2) << std::endl;
+    return 0;
+}
+
+int (*& changep(int (*&rp)(int,int)))(int, int)
+{
+    rp = jian;
+    return rp;
+}
+
+int main()
+{
+    int(*p)(int a, int b)(jia);
+    std::cout << p(1,2) << std::endl;
+    p = changep(p);
+    std::cout << p(1,2) << std::endl;
+
+    return 0;
+}
+#endif
+#if 0 //右值引用
+#include<iostream>
+int getdata(int && num)
+{
+    std::cout << num << std::endl;
+    num += 10;
+    return num;
+}
+
+int mian2()
+{
+    int a = 5;
+    int b = 4;
+    std::cout << getdata(a+1) << std::endl;
+
+    return 0;
+}
+
+int main()
+{
+    int a = 3;
+    int b = a + 1;
+    std::cout << getdata(std::move(a)) << std::endl;
+}
+#endif
+#if 1   //常引用
+#include<iostream>
+using namespace std;
+
+struct Teacher
+{
+    char name[64];
+    int age;
+};
+
+void printTeacher(const Teacher & myt)
+{
+    printf("myt.age:%d\n",myt.age);
+}
+
+int main()
+{
+    Teacher t1;
+    t1.age = 36;
+    printTeacher(t1);
+
+    return 0;
+}
 #endif
