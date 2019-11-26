@@ -1,3 +1,5 @@
 add_subdirectory(cpp1_namespace)
 add_subdirectory(cpp2_typecast)
 add_subdirectory(cpp3_reference)
+add_subdirectory(cpp4_polymorphism)
+add_subdirectory(cpp5_inheritance)
