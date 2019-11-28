@@ -1,6 +1,7 @@
 //
 // Created by Administrator on 2019/11/26.
 //
+#if 0
 #include <iostream>
 using namespace std;
 
@@ -30,3 +31,4 @@ int main()
 
     return 0;
 }
+#endif
