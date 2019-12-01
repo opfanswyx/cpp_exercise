@@ -4,3 +4,4 @@ project(cpp_exercise)
 set(CMAKE_CXX_STANDARD 11)
 
 ADD_SUBDIRECTORY(cplusplus_base)
+ADD_SUBDIRECTORY(C++Primer)
