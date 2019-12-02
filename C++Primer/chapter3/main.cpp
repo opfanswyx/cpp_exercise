@@ -130,6 +130,77 @@ int main()
 }
 #endif
 
-#if 1 // 3.6
+#if 0 // 3.6
 
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+    string s;
+    cout<<"please input a string(could space):"<<endl;
+    getline(cin,s);
+
+    for(auto &c : s)
+    {
+        c = 'x';
+    }
+    cout<< s << endl;
+    return 0;
+}
+#endif
+
+#if 0 //3.10
+
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+int main()
+{
+    string s, result;
+    cout<<"please input a sting:"<<endl;
+    getline(cin,s);
+    for(decltype(s.size())i=0;i<s.size();i++)
+    {
+        if(!ispunct(s[i]))
+            result += s[i];
+    }
+    cout<<result<<endl;
+
+    return 0;
+}
+#endif
+
+#if 1 //3.14
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<int> vInt;
+    int i;
+    char cont = 'y';
+    cout<<"please input a num:"<<endl;
+    while(cin>>i)
+    {
+        vInt.push_back(i);
+        cout<<"continu?(y or n)"<<endl;
+        cin>>cont;
+        if(cont != 'Y' && cont != 'y')
+        {
+            break;
+        }
+    }
+    for(auto men : vInt)
+    {
+        cout<< men << " ";
+    }
+    cout << endl;
+    return 0;
+}
 #endif
