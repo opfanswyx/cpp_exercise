@@ -174,7 +174,7 @@ int main()
 }
 #endif
 
-#if 1 //3.14
+#if 0 //3.14
 
 #include <iostream>
 #include <vector>
@@ -201,6 +201,42 @@ int main()
         cout<< men << " ";
     }
     cout << endl;
+    return 0;
+}
+#endif
+#if 1 //3.17
+
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    vector<string> vstring;
+    string ss;
+    char cont = 'y';
+    cout<<"please input some string:"<<endl;
+    while (cin>>ss)
+    {
+        for(auto &c : ss)
+        {
+            c = toupper(c);
+        }
+        vstring.push_back(ss);
+        cout<<"contiune(y or n)?:"<<endl;
+        cin>>cont;
+        if(cont != 'y' && cont != 'Y')
+        {
+            break;
+        }
+        cout<<"please input next string:"<<endl;
+    }
+    cout<<"the result:"<<endl;
+    for(auto s : vstring)
+    {
+        cout<<s<<endl;
+    }
     return 0;
 }
 #endif
