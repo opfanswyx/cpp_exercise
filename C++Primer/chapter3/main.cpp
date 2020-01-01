@@ -204,7 +204,7 @@ int main()
     return 0;
 }
 #endif
-#if 1 //3.17
+#if 0 //3.17
 
 #include <iostream>
 #include <string>
@@ -237,6 +237,111 @@ int main()
     {
         cout<<s<<endl;
     }
+    return 0;
+}
+#endif
+
+#if 0   //3.20
+
+#include<iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<int> vInt;
+    int iVal;
+    cout<<"please input some num:"<<endl;
+    while(cin >> iVal){
+        vInt.push_back(iVal);
+        cout<<"please input next num:"<<endl;
+    }
+
+    if(vInt.size() == 0){
+        cout<<"no num"<<endl;
+        return -1;
+    }
+
+    cout<<"相邻两项的和依次是："<<endl;
+    for(decltype(vInt.size()) i = 0; i < vInt.size() - 1; i += 2){
+        cout << vInt[i] + vInt[i+1] << " ";
+        if((i + 2) % 10 == 0)
+            cout<< endl;
+    }
+    if(vInt.size() % 2 != 0)
+        cout<< vInt[vInt.size() - 1];
+
+    cout<<"前尾两项的和依次是："<<endl;
+    for(decltype(vInt.size()) i = 0; i < vInt.size() / 2; i ++){
+        cout << vInt[i] + vInt[vInt.size() - i - 1] << " ";
+        if((i + 1) % 5 == 0)
+            cout<< endl;
+    }
+    if(vInt.size() % 2 != 0)
+        cout<< vInt[vInt.size() - 1];
+
+    return 0;
+}
+#endif
+
+#if 0 //3.23
+
+#include <iostream>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+    vector<int> vInt;
+    srand((unsigned)time(NULL));
+    for(int i = 0; i < 10; i++){
+        vInt.push_back( rand() % 1000);
+    }
+    cout<<"rand num:"<<endl;
+
+    for(auto it = vInt.cbegin(); it != vInt.cend(); it++){
+        cout << *it << " ";
+    }
+    cout << endl;
+
+    cout<< "orign * 10" << endl;
+    for(auto it = vInt.begin(); it != vInt.end(); it++){
+        *it *= 2;
+        cout << *it << " ";
+    }
+    cout<<endl;
+    return 0;
+}
+#endif
+
+#if 1
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<unsigned> vus(11);
+    auto it = vus.begin();
+    int ival;
+    cout<<"请输入一组成绩:"<<endl;
+    while(cin >> ival){
+        if(ival <= 100){
+            ++*(it + ival / 10);
+        }
+    }
+    cout<<"你总共输入了"<<vus.size()<<"个成绩,成绩分布为："<<endl;
+    for(auto it = vus.cbegin(); it != vus.cend(); it++){
+        cout << *it << " ";
+    }
+    cout << endl;
+
     return 0;
 }
 #endif
