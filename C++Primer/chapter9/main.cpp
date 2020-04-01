@@ -177,7 +177,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 
 #include <iostream>
 #include <list>
@@ -206,6 +206,113 @@ int main()
     cout<<"even:"<<endl;
     for(auto iter = even.cbegin(); iter != even.cend(); iter++){
         cout << *iter << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+#endif
+
+#if 0
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<string> svec;
+
+    string word;
+    auto iter = svec.begin();
+    while(cin >> word){
+        iter = svec.insert(iter, word);
+    }
+
+    for(auto iter = svec.cbegin(); iter != svec.cend(); iter++){
+        cout << *iter << endl;
+    }
+    return 0;
+
+}
+#endif
+
+#if 0
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<int> iv = {1,1,2,1};
+    int some_val = 1;
+
+    vector<int>::iterator iter = iv.begin();
+    int org_size = iv.size(), new_ele = 0;
+
+    while(iter != (iv.begin() + org_size / 2 + new_ele)){
+        if(*iter == some_val){
+            iter = iv.insert(iter, 2 * some_val);
+            new_ele++;
+            iter++; iter++;
+        } else{
+            iter++;
+        }
+    }
+
+    for(iter = iv.begin(); iter != iv.end(); iter++){
+        cout << *iter << endl;
+    }
+
+    return 0;
+}
+#endif
+
+#if 1
+
+#include <iostream>
+#include <vector>
+#include <list>
+
+using namespace std;
+
+int main(){
+    int ia[] = {0,1,1,2,3,5,8,13,21,55,89};
+    vector<int> iv;
+    list<int> il;
+
+    iv.assign(ia, ia+11);
+    il.assign(ia, ia+11);
+
+    vector<int>::iterator iiv = iv.begin();
+    while(iiv != iv.end()){
+        if(!(*iiv & 1)){
+            iiv = iv.erase(iiv);
+        }
+        else{
+            iiv++;
+        }
+    }
+
+    list<int>::iterator iil = il.begin();
+    while(iil != il.end()){
+        if(*iil & 1){
+            iil = il.erase(iil);
+        }
+        else{
+            iil++;
+        }
+    }
+
+    for(iiv = iv.begin(); iiv != iv.end(); iiv++){
+        cout << *iiv << " ";
+    }
+    cout << endl;
+
+    for(iil = il.begin(); iil != il.end(); iil++){
+        cout << *iil << " ";
     }
     cout << endl;
 
