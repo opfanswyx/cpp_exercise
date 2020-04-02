@@ -270,7 +270,7 @@ int main()
 }
 #endif
 
-#if 1
+#if 0
 
 #include <iostream>
 #include <vector>
@@ -313,6 +313,125 @@ int main(){
 
     for(iil = il.begin(); iil != il.end(); iil++){
         cout << *iil << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+#endif
+
+#if 0
+
+#include <iostream>
+#include <forward_list>
+
+using namespace std;
+
+void test_and_insert(forward_list<string> &sflst, const string &s1, const string &s2){
+    auto prev = sflst.before_begin();   //前驱元素
+    auto curr = sflst.begin();  //当前元素
+
+    bool inserted = false;
+
+    while(curr != sflst.end()){
+        if(*curr == s1){
+            curr = sflst.insert_after(curr, s2);
+            inserted = true;
+        }
+        prev = curr;
+        curr++;
+    }
+
+    if(!inserted){
+        sflst.insert_after(prev, s2);
+    }
+}
+
+int main()
+{
+    forward_list<string> sflst = {"hello","!","world","!"};
+
+    test_and_insert(sflst, "hello", "你好");
+
+    for(auto curr = sflst.cbegin(); curr != sflst.cend(); curr++){
+        cout<<*curr<<" ";
+    }
+    cout << endl;
+
+    test_and_insert(sflst,"!", "?");
+
+    for(auto curr = sflst.cbegin(); curr != sflst.cend(); curr++){
+        cout<<*curr<<" ";
+    }
+    cout << endl;
+
+    test_and_insert(sflst,"Bye", "再见");
+
+    for(auto curr = sflst.cbegin(); curr != sflst.cend(); curr++){
+        cout<<*curr<<" ";
+    }
+    cout << endl;
+
+    return 0;
+}
+#endif
+
+#if 0
+
+#include <iostream>
+#include <list>
+
+using namespace std;
+
+int main()
+{
+    list<int> ilst = {0,1,2,3,4,5,6,7,8,9};
+    auto curr = ilst.begin();
+
+    while(curr != ilst.end()) {
+        if (*curr & 1) {
+            curr = ilst.insert(curr, *curr);
+            curr++;
+            curr++;
+        } else {
+            curr = ilst.erase(curr);
+        }
+    }
+
+    for(curr = ilst.begin(); curr != ilst.end(); curr++){
+        cout << *curr << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+#endif
+
+#if 1
+
+#include <iostream>
+#include <forward_list>
+
+using namespace std;
+
+int main()
+{
+    forward_list<int> iflst = {0,1,2,3,4,5,6,7,8,9};
+    auto prev = iflst.before_begin();
+    auto curr = iflst.begin();
+
+    while(curr != iflst.end()){
+        if(*curr & 1){
+            curr = iflst.insert_after(curr, *curr);
+            prev = curr;
+            curr ++;
+        } else{
+            curr = iflst.erase_after(prev);
+        }
+    }
+
+    for(curr = iflst.begin(); curr != iflst.end(); curr++){
+        cout << *curr << " ";
     }
     cout << endl;
 
